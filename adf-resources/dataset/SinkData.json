@@ -1,0 +1,18 @@
+{
+	"name": "SinkData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "PFAzureDataLakeStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "pfblobstorage"
+			}
+		},
+		"schema": {}
+	}
+}

@@ -100,7 +100,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "RestResource",
+						"referenceName": "RestResource_copy1",
 						"type": "DatasetReference"
 					}
 				],

@@ -49,7 +49,10 @@
 					"headers": {
 						"Content-Type": "application/x-www-form-urlencoded"
 					},
-					"body": "@activity('getSecrets').output.value"
+					"body": {
+						"value": "@activity('getSecrets').output.value",
+						"type": "Expression"
+					}
 				}
 			},
 			{
@@ -78,7 +81,10 @@
 						"requestInterval": "00.00:00:00.010",
 						"requestMethod": "GET",
 						"additionalHeaders": {
-							"Authorization": "@concat('Bearer ',activity('getToken').output.access_token)"
+							"Authorization": {
+								"value": "@concat('Bearer ',activity('getToken').output.access_token)",
+								"type": "Expression"
+							}
 						}
 					},
 					"sink": {

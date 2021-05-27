@@ -23,6 +23,27 @@
 						"resource": "https://vault.azure.net"
 					}
 				}
+			},
+			{
+				"name": "getToken",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://api.petfinder.com/v2/oauth2/token",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/x-www-form-urlencoded"
+					},
+					"body": "@activity('getSecrets').output.value"
+				}
 			}
 		],
 		"annotations": []

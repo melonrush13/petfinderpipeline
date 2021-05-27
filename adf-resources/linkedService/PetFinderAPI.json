@@ -4,7 +4,7 @@
 		"annotations": [],
 		"type": "RestService",
 		"typeProperties": {
-			"url": "https://api.petfinder.com/v2/animals?type=dog?location=Colorado",
+			"url": "https://api.petfinder.com/v2/animals?type=dog",
 			"enableServerCertificateValidation": false,
 			"authenticationType": "Anonymous"
 		}

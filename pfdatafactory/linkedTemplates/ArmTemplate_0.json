@@ -17,7 +17,7 @@
 		},
 		"PetFinderAPI_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://api.petfinder.com/v2/animals?type=dog"
+			"defaultValue": "https://api.petfinder.com/v2/animals?type=dog&location=Colorado&limit=100"
 		}
 	},
 	"variables": {
@@ -245,7 +245,7 @@
 					"recurrence": {
 						"frequency": "Hour",
 						"interval": 4,
-						"startTime": "2021-05-26T18:00:00Z",
+						"startTime": "2021-05-26T21:00:00Z",
 						"endTime": "2021-06-04T01:04:00Z",
 						"timeZone": "UTC"
 					}

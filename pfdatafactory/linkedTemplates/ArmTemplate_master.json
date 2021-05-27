@@ -17,7 +17,7 @@
 		},
 		"PetFinderAPI_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://api.petfinder.com/v2/animals?type=dog"
+			"defaultValue": "https://api.petfinder.com/v2/animals?type=dog&location=Colorado&limit=100"
 		},
 		"containerUri": {
 			"type": "string",

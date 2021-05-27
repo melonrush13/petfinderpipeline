@@ -6,18 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "pfdatafactory"
-		},
-		"PFAzureDataLakeStorage_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'PFAzureDataLakeStorage'"
-		},
-		"PFAzureDataLakeStorage_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://petfinderstorage.dfs.core.windows.net"
-		},
-		"PetFinderAPI_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://api.petfinder.com/v2/animals?type=dog&location=Colorado&limit=100"
 		}
 	},
 	"variables": {
@@ -46,7 +34,6 @@
 						"typeProperties": {
 							"url": "https://meldevkeyvault.vault.azure.net/secrets/pfSecret/be75480845e14547b2da9dfd496d3206?api-version=7.0",
 							"method": "GET",
-							"headers": {},
 							"authentication": {
 								"type": "MSI",
 								"resource": "https://vault.azure.net"
@@ -130,81 +117,18 @@
 						"inputs": [
 							{
 								"referenceName": "RestResource",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						],
 						"outputs": [
 							{
 								"referenceName": "SinkData",
-								"type": "DatasetReference",
-								"parameters": {}
+								"type": "DatasetReference"
 							}
 						]
 					}
 				],
 				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/RestResource')]",
-				"[concat(variables('factoryId'), '/datasets/SinkData')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/RestResource')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PetFinderAPI",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "RestResource",
-				"typeProperties": {},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PetFinderAPI')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SinkData')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "PFAzureDataLakeStorage",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "Json",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobFSLocation",
-						"fileSystem": "pfblobstorage"
-					}
-				},
-				"schema": {}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/PFAzureDataLakeStorage')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/PFAzureDataLakeStorage')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('PFAzureDataLakeStorage_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('PFAzureDataLakeStorage_accountKey')]"
-					}
-				}
 			},
 			"dependsOn": []
 		},
@@ -216,7 +140,7 @@
 				"annotations": [],
 				"type": "RestService",
 				"typeProperties": {
-					"url": "[parameters('PetFinderAPI_properties_typeProperties_url')]",
+					"url": "https://api.petfinder.com/v2/animals?type=dog&location=Colorado&limit=100",
 					"enableServerCertificateValidation": false,
 					"authenticationType": "Anonymous"
 				}
@@ -236,8 +160,7 @@
 						"pipelineReference": {
 							"referenceName": "PetFinderPipeline",
 							"type": "PipelineReference"
-						},
-						"parameters": {}
+						}
 					}
 				],
 				"type": "ScheduleTrigger",

@@ -12,7 +12,7 @@
 			"value": "https://petfinderstorage.dfs.core.windows.net"
 		},
 		"PetFinderAPI_properties_typeProperties_url": {
-			"value": "https://api.petfinder.com/v2/animals?type=dog"
+			"value": "https://api.petfinder.com/v2/animals?type=dog&location=Colorado&limit=100"
 		},
 		"containerUri": {
 			"value": ""

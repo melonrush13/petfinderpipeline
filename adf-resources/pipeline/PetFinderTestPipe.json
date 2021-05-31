@@ -112,7 +112,7 @@
 				]
 			},
 			{
-				"name": "Notebook1",
+				"name": "Notebook",
 				"type": "DatabricksNotebook",
 				"dependsOn": [
 					{
